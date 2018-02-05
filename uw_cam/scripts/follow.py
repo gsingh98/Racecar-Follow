@@ -104,6 +104,7 @@ class tape_follow():
 					tag_x = 0 
 					tag_y = 0
 					tag_found = False
+
 				rows_since_last_tag += 1
       
 			#Exits if 2 tapes are found or there is more than a gap of MIN_GAP rows
