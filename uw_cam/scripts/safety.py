@@ -6,19 +6,18 @@ from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
 import cv2
 from cv_bridge import CvBridge, CvBridgeError
 
-MIN_PIXELS_TO_DRIVE = 1
+MIN_PIXELS_TO_DRIVE = 10
 
 class safety():
 	def __init__(self):
 		self.bridge = CvBridge()
 		self.sub = rospy.Subscriber('/camera/my_img/thresholded', Image, self.tape_present, queue_size=1)
 		self.pub = rospy.Publisher("/vesc/low_level/ackermann_cmd_mux/input/safety", AckermannDriveStamped, queue_size = 1)
-
+	
 	def tape_present(self, msg):
 		frame = self.bridge.imgmsg_to_cv2(msg, "mono8")
 		white_pixels = cv2.countNonZero(frame)
 		if white_pixels < MIN_PIXELS_TO_DRIVE:
-			#rospy.loginfo("stopping!")
 			drive_msg_stamped = AckermannDriveStamped()
 			drive_msg = AckermannDrive()
 			drive_msg.speed = 0.0
