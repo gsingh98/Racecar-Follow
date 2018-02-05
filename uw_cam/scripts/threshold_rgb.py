@@ -10,7 +10,7 @@ from cv_bridge import CvBridge, CvBridgeError
 """
 This program will take an image from the color camera and will
 threshold the image to show only red elements. This behaviour can 
-be changes by changing the constant values of the threshold limits.
+be changed by changing the constant values of the threshold limits.
 """
 
 HUE_LOW = 0
