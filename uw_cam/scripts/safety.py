@@ -6,7 +6,12 @@ from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
 import cv2
 from cv_bridge import CvBridge, CvBridgeError
 
-MIN_PIXELS_TO_DRIVE = 10
+"""
+This program will prevent the car from moving if the number
+of white pixels in the thresholded image is less than MIN_PIXELS_TO_DRIVE.
+"""
+
+MIN_PIXELS_TO_DRIVE = 5
 
 class safety():
 	def __init__(self):
