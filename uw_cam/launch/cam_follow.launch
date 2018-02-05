@@ -1,0 +1,6 @@
+<launch>
+        <node pkg="uw_cam" type="threshold_ir.py" name="Threshold_IR"/>
+	<node pkg="uw_cam" type="safety.py" name="Safety"/>
+	<node pkg="uw_cam" type="follow.py" name="Follow"/>
+</launch>
+
